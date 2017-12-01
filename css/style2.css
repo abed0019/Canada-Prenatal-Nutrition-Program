@@ -1,0 +1,39 @@
+body{
+	background-image:url("../img/mainback.png");
+}
+.topDiv{
+	padding-top: 20px;
+}
+.mainLogo{
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-style: italic;
+	font-size: 40px
+}
+.divLeft{
+	position:fixed;
+}
+.divRight{
+	flex: 2;
+	padding-top: 25px;
+}
+.flex{
+	display: flex;
+}
+.center{
+	text-align: center;	
+}
+.topPad{
+	margin-top: 5%;
+	}
+.sidebar{
+	position: fixed;
+}
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em;
+  }
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+  content: "";
+}

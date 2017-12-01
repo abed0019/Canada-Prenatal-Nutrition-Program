@@ -1,0 +1,35 @@
+body{
+  background-image:url("../img/mainback.png");
+}
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 20px;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 70%; 
+  height: 70%;
+  min-width: 200px;
+  max-width: 350px;
+}
+div br {
+    display: none;
+}
+.errorTimeout{
+  color:#FBFCFC;
+  border: 1px solid #FBFCFC;
+  background-color: #E74C3C;
+  opacity: 1.0;
+  margin-bottom: 10px;
+  height: 30px;
+  text-align: center;
+}
+.logoIm{
+  width: 80%
+  height: auto;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.img-center {margin:0 auto;}

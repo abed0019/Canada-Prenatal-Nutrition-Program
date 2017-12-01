@@ -1,0 +1,102 @@
+<?php
+
+session_start();
+$limit = 600;
+$_SESSION['Total'] = $_SESSION['last_acted_on'] + $limit;
+$timeout_msg = 'Your session has timed out.';
+$_SESSION['hasTimedOut'] = false;
+
+$login = 'login.php';
+$notFoundMsg = "<br><center><h4>Unable to locate: $login<br>Please contact your IT support.</h4></center>";
+
+if(!isset($_SESSION['siteID']) || empty($_SESSION['siteID'])) {
+  if(file_exists($login)) {
+    header('Location: '.$login); //Send the user back to the login page.
+  } else {
+    echo $notFoundMsg;
+    exit;
+  } 
+} 
+if((time() - $_SESSION['Total']) > $limit){
+	session_unset();
+	session_destroy();
+	header('Location: login.php');
+} else {
+	$_SESSION['last_acted_on'] = time();
+}
+?>
+
+<!DOCTYPE>
+<html lang="en">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge; IE=11; IE=10; IE=9; IE=8; IE=7 ">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--Style-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/style2.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/html5shiv.js"></script>		
+	</head>
+	<body>
+		<div class="container">
+			<div class="row headerBG">
+				<div class="col-xs-12 topDiv">
+					<div class="col-lg-12 hidden-sm hidden-md hidden-lg center"><img src="img/CPNP_Banner_XS.png"></div>
+					<div class="col-lg-12 hidden-xs hidden-md hidden-lg center"><img src="img/CPNP_Banner_S.png"></div>
+					<div class="col-lg-12 hidden-xs hidden-sm hidden-lg center"><img src="img/CPNP_Banner_M.png"></div>
+					<div class="col-lg-12 hidden-xs hidden-sm hidden-md center"><img src="img/CPNP_Banner_L.png"></div>
+				</div>
+			</div>
+			<div class="row headerBG">
+				<div class="col-xs-12"></div>
+				<div class="col-xs-12"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+					<br>
+					<a href="RegisterForm.php" class="btn btn-primary btn-lg btn-block">Registration Form</a>
+					<a href="BabyRegisterForm.php" class="btn btn-primary btn-lg btn-block">Baby Registration Form</a>
+					<a href="AttendanceForm.php" class="btn btn-primary btn-lg btn-block">Attendance Form</a>
+					<a href="QuestionReport.php"  class="btn btn-primary btn-lg btn-block">Questions Report</a>
+					<a href="GenReport.php" class="btn btn-primary btn-lg btn-block">General Reports</a>
+					<br>
+					<a href="AccountSettings.php" class="btn btn-info btn-lg btn-block">Account Settings</a>
+					<br>
+					<a href="logout.php" class="btn btn-danger btn-lg btn-block">Logout</a>
+				</div>
+				<div class="col-lg-3 hidden-lg">
+					<br>
+					<button type="button" id="menuButton" class="btn btn-default hidden-lg">Menu&#160;
+						<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+					</button>
+					<br>
+					<div id="opt" hidden>
+						<br>
+						<a href="RegisterForm.php" class="btn btn-primary btn-lg btn-block">Registration Form</a>
+						<a href="BabyRegisterForm.php" class="btn btn-primary btn-lg btn-block">Baby Registration Form</a>
+						<a href="AttendanceForm.php" class="btn btn-primary btn-lg btn-block">Attendance Form</a>
+						<a href="QuestionReport.php"  class="btn btn-primary btn-lg btn-block">Questions Report</a>
+						<a href="GenReport.php" class="btn btn-primary btn-lg btn-block">General Reports</a>
+						<br>
+						<a href="AccountSettings.php" class="btn btn-info btn-lg btn-block">Account Settings</a>
+						<br>
+						<a href="logout.php" class="btn btn-danger btn-lg btn-block">Logout</a>
+					</div>
+				</div>
+				<div class="col-lg-9">
+		<script>
+			$(document).ready(function(){
+				$('#menuButton').click(function(){
+					$('#opt').show();
+				});
+			});
+		</script>
